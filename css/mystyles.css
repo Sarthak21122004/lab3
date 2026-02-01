@@ -1,0 +1,100 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #333;
+    color: white;
+    padding: 12px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.navbar a:hover {
+    text-decoration: underline;
+}
+
+/* ── Main Grid ───────────────────────────────────── */
+.main-grid {
+    display: grid;
+    grid-template-columns: 300px 1fr 1fr;   /* left narrow | middle wider | right */
+    grid-template-rows: 400px 1fr;           /* top images row | bottom text row */
+    min-height: calc(100vh - 140px);         /* approx navbar + footer height */
+}
+
+/* Rocket – full height of grid (both rows) */
+.rocket {
+    grid-row: 1 / 3;
+}
+
+.rocket img,
+.solar img,
+.rover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Text block – only columns 2 and 3, bottom row */
+.text-block {
+    grid-column: 2 / 4;
+    background-color: #8fa2ad;          /* grey-blue from most screenshots */
+    color: white;
+    padding: 30px 40px;
+    font-size: 15px;
+    line-height: 1.55;
+}
+
+.text-block p {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    font-size: 13px;
+}
+
+/* Mobile fallback */
+@media (max-width: 768px) {
+    .main-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto auto;
+    }
+    
+    .rocket, .solar, .rover, .text-block {
+        grid-column: 1;
+        grid-row: auto;
+    }
+    
+    .rocket, .solar, .rover {
+        height: 40vh;
+    }
+}
